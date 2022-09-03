@@ -1,4 +1,4 @@
-// LeetCode - 2351. First Letter to Appear Twice
+// LeetCode - 2351. First Letter to Appear Twice - GO
 
 // Given a string s consisting of lowercase English letters, return the first letter to appear twice.
 // Note:
@@ -16,9 +16,21 @@
 // The letter 'c' is the first letter to appear twice, because out of all the letters the index of its second occurrence is the smallest.
 
 function repeatedCharacter(s){
+    let charCount = {};
+    for(let i=0;i<s.length;i++){
+        if(s[i] in charCount){
+            return s[i]   
+        }
+        charCount[s[i]] = charCount[s[i]] ?  charCount[s[i]] + 1 : 1 
+    }
+}
+
+repeatedCharacter('abcbwc')
+
+// Visualize inside HashMap
+function repeatedCharacterVisualize(s){
     const hashMap = new Map();
     const unqInput = [...new Set(s)]
-    let min = 9999999;
     for (let i = 0; i < unqInput.length; i++){
         hashMap.set(unqInput[i], [])
     }
@@ -36,4 +48,4 @@ function repeatedCharacter(s){
     }
     console.log(hashMap)
 }
-repeatedCharacter('abcbwc')
+repeatedCharacterVisualize('abcbwc')
